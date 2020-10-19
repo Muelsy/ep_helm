@@ -22,6 +22,7 @@ etherpad:
   SKIN_NAME: "colibris"
   DEFAULT_PAD_TEXT: "Welcome to Helm Etherpad"
   TRUST_PROXY: "true"
+  API_KEY: "exampleapikeyforetherpadpleasechangeme"
 
 
 

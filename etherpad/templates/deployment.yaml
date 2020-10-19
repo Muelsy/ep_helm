@@ -48,8 +48,18 @@ spec:
             httpGet:
               path: /
               port: http
+          volumeMounts:
+            - name: apikey
+              mountPath: "/etc/apikey"
+              readOnly: true
+          command: ["node", "node_modules/ep_etherpad-lite/node/server.js", "--apikey", "/etc/apikey/APIKEY.txt"]
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+        - name: apikey
+          secret:
+            secretName: {{ .Release.Name }}-apikey
+
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
